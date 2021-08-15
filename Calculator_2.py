@@ -15,7 +15,7 @@ D_fst_val = ""
 second_value = ""
 symbol = ""
 Result = 0
-text = ""
+text_s = ""
 
 
 def Button_value(value):
@@ -24,7 +24,7 @@ def Button_value(value):
     display.delete(0, END)
     D_fst_val += value
     display.insert(0, D_fst_val)
-    print("from button " + str(D_fst_val))
+    # print("from button " + str(D_fst_val))
 
 
 def clear_func():
@@ -49,8 +49,8 @@ def ASMD(smbl):
 
 
 def Result_func():
-    global symbol, Result, first_value, second_value, temp
-    print(first_value, display.get())
+    global symbol, Result, first_value, second_value, temp, text_s
+    # print(first_value, display.get())
     if symbol == "+":
         Result = float(first_value) + float(display.get())
 
@@ -63,17 +63,27 @@ def Result_func():
     elif symbol == "%":
         Result = float(first_value) / float(display.get())
 
-    display.delete(0, END)
-    display.insert(0, Result)
 
     temp = Result
+    
+    # if len(first_value) > (len(display.get() + symbol)):
+    
+    print(first_value)
+    print(display.get() + " "*5 + "("+ symbol+")")
+    print("----------------------------")
+    print(str(Result) + "\n\n")
+
+    display.delete(0, END)
+    display.insert(0, Result)
+    
     # print(str(Result) + " from result")
-    # smbl_lbl.grid(row=5, column=0)
+    # text_s = symbol
+    # smbl_lbl.grid(row=6, column=0)
 
 
 # Buttons (0-9 , clear , +, - , * , %, =)
-# smbl_lbl = Label(root, textvariable=text,
-    #  font="Corbel 20 ", padx=12, pady=5)
+# smbl_lbl = Label(root, textvariable=text_s,
+#      font="Corbel 20 ", padx=12, pady=5)
 
 
 btn_9 = Button(root, text="9", font="arial 20 bold", padx=12,
