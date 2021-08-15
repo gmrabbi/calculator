@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 root = Tk()
 root.wm_title("Calculator")
@@ -44,7 +45,7 @@ def ASMD(smbl):
         if temp:
             first_value = temp
         D_fst_val = ""
-    display.delete(0, END)
+    # display.delete(0, END)
     D_fst_val = ""
 
 
@@ -61,21 +62,23 @@ def Result_func():
         Result = float(first_value) * float(display.get())
 
     elif symbol == "%":
-        Result = float(first_value) / float(display.get())
-
+        try:
+            Result = float(first_value) / float(display.get())
+        except Exception as err:
+            messagebox.showerror("Error", err)
 
     temp = Result
-    
+
     # if len(first_value) > (len(display.get() + symbol)):
-    
+
     print(first_value)
-    print(display.get() + " "*5 + "("+ symbol+")")
+    print(display.get() + " "*5 + "(" + symbol+")")
     print("----------------------------")
     print(str(Result) + "\n\n")
 
     display.delete(0, END)
     display.insert(0, Result)
-    
+
     # print(str(Result) + " from result")
     # text_s = symbol
     # smbl_lbl.grid(row=6, column=0)
@@ -156,7 +159,8 @@ btn_mul.grid(row=2, column=4)
 btn_minus.grid(row=3, column=4)
 btn_add.grid(row=4, column=4)
 
-name = Label(root, text="Prepraid by Golam Mostafa Rabby.",font="arial 10 bold",bd=4, fg="blue")
+name = Label(root, text="Prepraid by Golam Mostafa Rabby.",
+             font="arial 10 bold", bd=4, fg="blue")
 name.grid(row=5, columnspan=5)
 
 mainloop()
